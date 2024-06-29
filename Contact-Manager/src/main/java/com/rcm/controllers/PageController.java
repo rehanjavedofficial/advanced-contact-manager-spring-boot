@@ -16,4 +16,14 @@ public class PageController {
         return "home";
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/about")
+    public String aboutUs() {
+        return "about";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/service")
+    public String service() {
+        return "service";
+    }
+
 }
