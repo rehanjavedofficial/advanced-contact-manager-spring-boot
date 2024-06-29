@@ -21,9 +21,24 @@ public class PageController {
         return "about";
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/contact")
+    public String contact() {
+        return "contact";
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/service")
     public String service() {
         return "service";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/signup")
+    public String signup() {
+        return "signup";
     }
 
 }
