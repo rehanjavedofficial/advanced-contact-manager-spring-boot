@@ -1,8 +1,23 @@
 console.log("connected");
 
+/*
+  MOBILE MENU LOADER.
+ */
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.querySelector("[data-collapse-toggle]");
+    const navMenu = document.getElementById("navbar-cta");
+
+    toggleButton.addEventListener("click", function() {
+        navMenu.classList.toggle("hidden");
+    });
+});
+
+
+/*
+ DARK MODE CODE.
+ */
 let currentTheme = getTheme();
 
-document.querySelector("#themeChange").innerHTML = "Rehan";
 setupTheme();
 
 function setupTheme() {
@@ -12,12 +27,13 @@ function setupTheme() {
     const button = document.querySelector("#themeChange");
     button.addEventListener("click", (e) => {
         let oldTheme = currentTheme;
+        const icon = '<i class="fa-solid fa-circle-half-stroke"></i>';
         if (currentTheme === "light") {
             currentTheme = "dark";
-            button.innerHTML = "Light";
+            button.innerHTML = icon + " Light";
         } else {
             currentTheme = "light";
-            button.innerHTML = "Light";
+            button.innerHTML = icon + " Dark";
         }
         setTheme(currentTheme);
         document.querySelector("html").classList.remove(oldTheme);
