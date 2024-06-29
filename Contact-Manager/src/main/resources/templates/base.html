@@ -11,13 +11,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="p-4">
-        <ul>
-            <li><a th:href="@{'/home'}">Home</a></li>
-            <li><a th:href="@{'/about'}">About</a></li>
-            <li><a th:href="@{'/service'}">Service</a></li>
-        </ul>
-    </header>
+    <header th:replace="~{navbar :: navbar}"></header>
 
     <!-- Body -->
     <div th:replace="${content}"></div>
