@@ -10,7 +10,24 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
+    <!-- Header -->
+    <header class="p-4">
+        <ul>
+            <li><a th:href="@{'/home'}">Home</a></li>
+            <li><a th:href="@{'/about'}">About</a></li>
+            <li><a th:href="@{'/service'}">Service</a></li>
+        </ul>
+    </header>
+
+    <!-- Body -->
     <div th:replace="${content}"></div>
+
+    <!-- Footer -->
+    <footer class="p-4">
+        <p>Developed by Rehan Javed</p>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
+
 </body>
 </html>
