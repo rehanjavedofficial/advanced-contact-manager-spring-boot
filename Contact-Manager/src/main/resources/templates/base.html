@@ -11,7 +11,9 @@
 </head>
 <body>
     <!-- Header -->
-    <header th:replace="~{navbar :: navbar}"></header>
+    <header>
+        <nav th:replace="~{navbar :: navbar}"></nav>
+    </header>
 
     <!-- Body -->
     <div th:replace="${content}"></div>
