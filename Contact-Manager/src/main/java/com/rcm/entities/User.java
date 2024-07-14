@@ -16,7 +16,8 @@ import java.util.List;
 public class User {
 
     @Id
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int userId;
     @Column(name = "user_name", nullable = false)
     private String name;
     @Column(unique = true, nullable = false)
@@ -32,10 +33,25 @@ public class User {
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
     // provider
+    @Enumerated(EnumType.STRING)
     private Provider provider = Provider.SELF;
     private String providerUserId;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true )
     private List<Contact> contacts = new ArrayList<>();
+
+    public void update(User user) {
+        this.about = user.getAbout();
+        this.profilePic = user.getProfilePic();
+        this.phoneNumber = user.getPhoneNumber();
+        this.email = user.getEmail();
+        this.enabled = user.isEnabled();
+        this.phoneVerified = user.isPhoneVerified();
+        this.emailVerified = user.isEmailVerified();
+        this.provider = user.getProvider() == null ? Provider.SELF : user.getProvider();
+        this.providerUserId = user.getProviderUserId();
+        this.name = user.getName();
+        this.password = user.getPassword();
+    }
 
 }

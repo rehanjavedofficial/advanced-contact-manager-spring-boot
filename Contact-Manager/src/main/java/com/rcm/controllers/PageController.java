@@ -1,5 +1,9 @@
 package com.rcm.controllers;
 
+import com.rcm.entities.User;
+import com.rcm.entities.forms.UserForm;
+import com.rcm.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PageController {
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/home")
     public String homePage(Model model){
@@ -37,8 +44,21 @@ public class PageController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/signup")
-    public String signup() {
+    public String signup(Model model) {
+        UserForm userForm = new UserForm();
+        model.addAttribute("userForm", userForm);
         return "signup";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/do-register")
+    public String doRegister(UserForm userForm) {
+        System.out.println("Register: " + userForm.toString());
+
+        User user = User.builder().name(userForm.getFullName())
+                .email(userForm.getEmail()).password(userForm.getPassword())
+                .about(userForm.getAbout()).phoneNumber(userForm.getPhone()).build();
+        userService.save(user);
+        return "redirect:/signup";
     }
 
 }
