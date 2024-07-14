@@ -12,5 +12,6 @@ public interface UserService {
     User update(User user);
     Optional<User> delete(int id);
     List<User> getAllUsers();
+    boolean canLogin(String username, String password);
 
 }

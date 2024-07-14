@@ -6,6 +6,7 @@ import com.rcm.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -51,7 +52,7 @@ public class PageController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/do-register")
-    public String doRegister(UserForm userForm) {
+    public String doRegister(@ModelAttribute UserForm userForm) {
         System.out.println("Register: " + userForm.toString());
 
         User user = User.builder().name(userForm.getFullName())

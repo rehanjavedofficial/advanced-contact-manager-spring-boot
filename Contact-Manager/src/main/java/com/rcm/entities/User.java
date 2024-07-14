@@ -34,6 +34,7 @@ public class User {
     private boolean phoneVerified = false;
     // provider
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     private Provider provider = Provider.SELF;
     private String providerUserId;
 
