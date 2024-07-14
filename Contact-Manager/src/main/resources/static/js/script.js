@@ -36,7 +36,9 @@ function setupTheme() {
             button.innerHTML = icon + " Dark";
         }
         setTheme(currentTheme);
-        document.querySelector("html").classList.remove(oldTheme);
+        if (oldTheme) {
+            document.querySelector("html").classList.remove(oldTheme);
+        }
         document.querySelector("html").classList.add(currentTheme);
     })
 
